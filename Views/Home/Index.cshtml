@@ -1,0 +1,14 @@
+﻿@using EntityFrameworkMVC.Services
+@model Person
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Hello @Model.Name</h2>
+
+@foreach(var account in Model.SavingAccounts){
+    <p>Account Number @account.SavingAccountId: </p>
+    <p>Initial Amount: @account.Amount € (@account.Rate by @(account.IsRatebyMonth ? "month" : "year"))</p>
+    <p>Current Amount: @SavingCalculator.Calcul(account) €</p>
+}
